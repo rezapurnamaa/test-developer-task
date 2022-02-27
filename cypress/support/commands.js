@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import '@testing-library/cypress/add-commands';
+
+Cypress.Commands.add('getByLabel', (label) => {
+    // you can disable individual command logging
+    // by passing {log: false} option
+    cy.log('**getByLabel**')
+    cy.contains('label', label)
+      .invoke('attr', 'for')
+      .then((id) => {
+        cy.get('#' + id)
+      })
+  })
