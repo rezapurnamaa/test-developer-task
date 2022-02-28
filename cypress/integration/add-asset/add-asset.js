@@ -1,7 +1,6 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import {generateTenRandomNumber, makeId, setupIntercept} from '../../fixtures/common'
 
-const correctAsset = makeId(4) + generateTenRandomNumber();
-const wrongAsset = makeId(3) + generateTenRandomNumber();
 let inputAsset = ''
 
 Given('I am on {string} page', (url) => {
@@ -11,11 +10,11 @@ Given('I am on {string} page', (url) => {
 When('I input {string} asset name', (asset) => {
     switch(asset) {
         case 'correct':
-            inputAsset = correctAsset
+            inputAsset = makeId(4) + generateTenRandomNumber();
             cy.getByLabel('New Asset').type(`${inputAsset}`)
             break;
         case 'wrong':
-            inputAsset = wrongAsset
+            inputAsset = makeId(3) + generateTenRandomNumber();
             cy.getByLabel('New Asset').type(`${inputAsset}`)
             break;
         default:
@@ -29,29 +28,24 @@ And('I click {string} button', (text) => {
     cy.findByRole('button', {label: text}).focus().click()
 });
 
-Then('I should see {string}', function (expectedText) {
-    if(expectedText === "Correct format") {
-        cy.getDataTestModal('modal-body').should('be.visible').contains(expectedText).contains(inputAsset)
-    } else {
-        cy.on('window:alert',(txt)=>{
-            expect(txt).to.contains(expectedText);
-         })
-    }
-    
+And('The database is not available', () => {
+    setupIntercept(inputAsset)
 });
 
-function generateTenRandomNumber() {
-    return Math.floor(1000000000 + Math.random() * 9000000000);
-}
+Then('I should see {string}', function (expectedText) {
 
-function makeId(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
-
+    switch(expectedText) {
+        case 'added to the list':
+            cy.getDataTestModal('modal-body').should('be.visible').contains(expectedText).contains(inputAsset)
+            break;
+        case 'Response status code: 403':
+            cy.get('@interceptAddAsset').its('response').then((res) => {
+                expect(res.statusCode).to.eq(403)
+            })
+            break;
+        default:
+            cy.on('window:alert',(txt)=>{
+                expect(txt).to.contains(expectedText);
+             }).screenshot()
+    }
+});
