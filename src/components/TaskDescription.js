@@ -8,7 +8,7 @@ const TaskDescription = () => {
       <br />
       <ul>
         <li>
-          User has abbility to <b>Add asset</b>
+          User has ability to <b>Add asset</b>
           <ul>
             <li>The asset name should be unique</li>
             <li>
@@ -19,7 +19,7 @@ const TaskDescription = () => {
         </li>
         <br />
         <li>
-          User has abbility to see <b>Existing asset</b>
+          User has ability to see <b>Existing asset</b>
           <ul>
             <li>Search by assert name</li>
             <li>Filter by assert name</li>

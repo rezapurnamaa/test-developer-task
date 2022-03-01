@@ -110,7 +110,7 @@ class AddAssetForm extends React.Component {
           toggle={this.toggleSuccess}
           centered
         >
-          <MDBModalHeader toggle={this.toggleSuccess}>Sucssess</MDBModalHeader>
+          <MDBModalHeader toggle={this.toggleSuccess}>Success</MDBModalHeader>
           <MDBModalBody>
             Asset {this.state.name} was added to the list
           </MDBModalBody>
