@@ -1,11 +1,7 @@
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 import {generateTenRandomNumber, makeId, setupIntercept} from '../../fixtures/common'
 
 let inputAsset = ''
-
-Given('I am on {string} page', (url) => {
-    cy.visit(url)
-})
 
 When('I input {string} asset name', (asset) => {
     switch(asset) {
