@@ -14,8 +14,9 @@ export function makeId(length) {
 }
 
 export function setupIntercept(assetId) {
-    cy.log("setup intercept to POST request.")
-    cy.intercept('POST', `/addAsset/${assetId}`, {
-        statusCode: 403,
-    }).as("interceptAddAsset")
+    cy.log("setup intercept to POST request.").then(() => {       
+        cy.intercept('POST', `/addAsset/${assetId}`, {
+            statusCode: 403,
+        }).as("interceptAddAsset")
+    })
 }
