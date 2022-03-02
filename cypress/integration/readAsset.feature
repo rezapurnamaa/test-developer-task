@@ -1,23 +1,28 @@
 Feature: Read Exisiting Asset test
     User has abbility to see Existing asset
-    Search by assert name
-    Filter by assert name
-    Sort by assert name
+    Search by asset name
+    Filter by asset name
+    Sort by asset name
 
-    Background: Before Each
+    Background:
         # this step in common
-        Given asset is created
+        Given clean database
+        Given random asset is created
         Given I am on "/assets" page
 
 
-    Scenario: Search asset by assert name
-        
+    Scenario: Search asset by asset name
+        When search asset using "Search"
+        Then asset appears on data table
 
+    Scenario: Filter asset by asset name
+        When search asset using "Filter"
+        Then asset appears on data table
 
-    Scenario: Filter asset by assert name
+    Scenario: Sort asset by asset name
+        When search asset using "Sort"
+        Then assets appear sorted
 
-
-    Scenario: Sort asset by assert name
 
 
 

@@ -36,7 +36,7 @@ Cypress.Commands.add('getByLabel', (label) => {
       })
   })
 
-  Cypress.Commands.add('getDataTestModal', (text) => {
-    cy.log('**getDataTestModal**')
+  Cypress.Commands.add('getDataTest', (text) => {
+    cy.log(`**getDataTest**: ${text}`)
     cy.get(`[data-test="${text}"]`,{withinSubject:null})
   })

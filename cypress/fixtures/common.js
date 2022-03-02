@@ -13,10 +13,19 @@ export function makeId(length) {
    return result;
 }
 
-export function setupIntercept(assetId) {
+export function setupIntercept(assetId, status) {
     cy.log("setup intercept to POST request.").then(() => {       
         cy.intercept('POST', `/addAsset/${assetId}`, {
-            statusCode: 403,
+            statusCode: status,
         }).as("interceptAddAsset")
     })
+}
+
+export function validateSorting(notSortedAssetNames, sortedAssetNames) {
+    const sortingSeedAssets = notSortedAssetNames.sort((previousAsset, nextAsset) => {
+        if (previousAsset < nextAsset) { return -1; }
+        if (previousAsset > nextAsset) { return 1; }
+    });
+
+    expect(sortingSeedAssets, 'Assets are sorted alphabetically').to.deep.equal(sortedAssetNames);
 }

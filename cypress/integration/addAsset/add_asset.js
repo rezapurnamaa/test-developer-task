@@ -19,14 +19,14 @@ When('I input {string} asset name', (asset) => {
 });
 
 And('The database is not available', () => {
-    setupIntercept(inputAsset)
+    setupIntercept(inputAsset, 403)
 });
 
 Then('I should see {string}', function (expectedText) {
 
     switch(expectedText) {
         case 'added to the list':
-            cy.getDataTestModal('modal-body').should('be.visible').contains(expectedText).contains(inputAsset)
+            cy.getDataTest('modal-body').should('be.visible').contains(expectedText).contains(inputAsset)
             break;
         case 'Response status code: 403':
             cy.get('@interceptAddAsset').its('response').then((res) => {
