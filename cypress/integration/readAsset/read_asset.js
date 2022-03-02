@@ -15,7 +15,13 @@ When('I input {string} asset name', (asset) => {
             break;
         default:
             cy.log("empty input Asset")
-    }  
+    }
+    
+});
+
+
+And('I click {string} button', (text) => {
+    cy.findByRole('button', {label: text}).focus().click()
 });
 
 And('The database is not available', () => {
