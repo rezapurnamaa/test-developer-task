@@ -1,5 +1,5 @@
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
-import {generateTenRandomNumber, makeId, setupIntercept, validateSorting } from '../../fixtures/common'
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import {generateTenRandomNumber, makeId, setupIntercept, validateSorting } from '../../helper/common'
 
 let inputAsset = ''
 let assetId = ''

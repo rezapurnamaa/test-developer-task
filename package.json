@@ -35,7 +35,9 @@
     "deploy": "gh-pages -d build",
     "precommit": "lint-staged",
     "cy:open": "cypress open",
-    "cy:test": "concurrently --kill-others \"npm run start-api\" \"npm run start\" \"npm run cy:open\""
+    "cy:run": "cypress run",
+    "cy:test": "concurrently --kill-others \"npm run start-api\" \"npm run start\" \"npm run cy:open\"",
+    "cy:run:headless": "concurrently --kill-others \"npm run start-api\" \"npm run start\" \"npm run cy:run\""
   },
   "lint-staged": {
     "*.{js,json,css,md}": [

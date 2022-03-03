@@ -1,5 +1,8 @@
 {
     "baseUrl": "http://localhost:3000/#",
     "testFiles": "**/*.feature",
-    "experimentalNetworkStubbing": true
+    "retries": {
+        "runMode": 2,
+        "openMode": 1
+    }
 }
