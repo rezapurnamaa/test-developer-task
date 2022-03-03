@@ -1,5 +1,5 @@
 Feature: Read Exisiting Asset test
-    User has abbility to see Existing asset
+    User has ability to see Existing asset
     Search by asset name
     Filter by asset name
     Sort by asset name

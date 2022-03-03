@@ -3,6 +3,7 @@
 ## Description
 
 This project covers end-to-end test for the app [test-developer-task](https://elinvar.de/)
+
 The project consists of:
 - helper -> helper functions for validation, mock, calculations
 - integration -> tests feature folder
@@ -10,7 +11,15 @@ The project consists of:
 
 
 ## Test-Scenario
-
+- Add Asset test
+    - User has abbility to Add asset
+    - The asset name should be unique
+    - The asset name is a combination of 4 uppercase letters and 10 digitalis
+- Read Exisiting Asset test
+    - User has ability to see Existing asset
+    - Search by asset name
+    - Filter by asset name
+    - Sort by asset name
 
 ## How To Install
 ### prerequisite

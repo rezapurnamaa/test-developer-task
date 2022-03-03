@@ -1,7 +1,7 @@
 Feature: Add Asset test
-    User has abbility to Add asset
+    User has ability to Add asset
     The asset name should be unique
-    The asset name is a combination of 4 uppercase letters and 10 digitalis
+    The asset name is a combination of 4 uppercase letters and 10 digits
 
     Background: Before Each
         # this step in common
